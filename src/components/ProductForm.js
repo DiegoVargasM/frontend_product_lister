@@ -77,7 +77,7 @@ export const ProductForm = () => {
         //className={emptyFields.includes("load") ? "error" : ""}
       />
 
-      <button>Add Workout</button>
+      <button>Add Product</button>
       {error && <div className="error">{error}</div>}
     </form>
   );
