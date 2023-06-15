@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useProductsContext } from "../hooks/useProductsContext";
 
 //components
-import { ProductDetails } from "../components/ProductDetails";
-import { ProductForm } from "../components/ProductForm";
+import ProductDetails from "../components/ProductDetails";
+import ProductForm from "../components/ProductForm";
 
-export const Home = () => {
+const Home = () => {
   const { products, dispatch } = useProductsContext();
 
   useEffect(() => {
@@ -22,12 +22,13 @@ export const Home = () => {
   return (
     <div className="home">
       <div className="products">
-        {products &&
-          products.map((product) => (
-            <ProductDetails key={product._id} product={product} />
-          ))}
+        {products?.map((product) => (
+          <ProductDetails product={product} key={product._id} />
+        ))}
       </div>
       <ProductForm />
     </div>
   );
 };
+
+export default Home;
