@@ -9,6 +9,7 @@ const ProductForm = () => {
   const [amount, setAmount] = useState("");
   const [aditional_info, setAditionalInfo] = useState("");
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,13 +27,15 @@ const ProductForm = () => {
 
     if (!response.ok) {
       setError(json.error);
+      setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
-      setError(null);
       setProductName("");
       setCategory("");
       setAmount("");
       setAditionalInfo("");
+      setError(null);
+      setEmptyFields([]);
       console.log("new product added", json);
       dispatch({ type: "CREATE_PRODUCT", payload: json });
     }
@@ -47,6 +50,7 @@ const ProductForm = () => {
         type="text"
         onChange={(e) => setProductName(e.target.value)}
         value={product_name}
+        className={emptyFields.includes("product_name") ? "error" : ""}
       />
 
       <label>Category:</label>
@@ -54,6 +58,7 @@ const ProductForm = () => {
         type="text"
         onChange={(e) => setCategory(e.target.value)}
         value={category}
+        className={emptyFields.includes("category") ? "error" : ""}
       />
 
       <label>Amount:</label>
@@ -61,6 +66,7 @@ const ProductForm = () => {
         type="number"
         onChange={(e) => setAmount(e.target.value)}
         value={amount}
+        className={emptyFields.includes("amount") ? "error" : ""}
       />
 
       <label>Aditional Info:</label>
