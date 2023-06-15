@@ -1,15 +1,14 @@
 import { useState } from "react";
-/* import { useProductsContext } from "../hooks/useProductsContext"; */
+import { useProductsContext } from "../hooks/useProductsContext";
 
-export const ProductForm = () => {
-  //const { dispatch } = useProductsContext();
+const ProductForm = () => {
+  const { dispatch } = useProductsContext();
 
   const [product_name, setProductName] = useState("");
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState("");
   const [aditional_info, setAditionalInfo] = useState("");
   const [error, setError] = useState(null);
-  //const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,17 +26,15 @@ export const ProductForm = () => {
 
     if (!response.ok) {
       setError(json.error);
-      //setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
+      setError(null);
       setProductName("");
       setCategory("");
       setAmount("");
       setAditionalInfo("");
-      setError(null);
-      //setEmptyFields([]);
       console.log("new product added", json);
-      //dispatch({ type: "CREATE_WORKOUT", payload: json });
+      dispatch({ type: "CREATE_PRODUCT", payload: json });
     }
   };
 
@@ -50,7 +47,6 @@ export const ProductForm = () => {
         type="text"
         onChange={(e) => setProductName(e.target.value)}
         value={product_name}
-        //className={emptyFields.includes("title") ? "error" : ""}
       />
 
       <label>Category:</label>
@@ -58,7 +54,6 @@ export const ProductForm = () => {
         type="text"
         onChange={(e) => setCategory(e.target.value)}
         value={category}
-        //className={emptyFields.includes("load") ? "error" : ""}
       />
 
       <label>Amount:</label>
@@ -66,7 +61,6 @@ export const ProductForm = () => {
         type="number"
         onChange={(e) => setAmount(e.target.value)}
         value={amount}
-        //className={emptyFields.includes("reps") ? "error" : ""}
       />
 
       <label>Aditional Info:</label>
@@ -74,7 +68,6 @@ export const ProductForm = () => {
         type="text"
         onChange={(e) => setAditionalInfo(e.target.value)}
         value={aditional_info}
-        //className={emptyFields.includes("load") ? "error" : ""}
       />
 
       <button>Add Product</button>
@@ -82,3 +75,5 @@ export const ProductForm = () => {
     </form>
   );
 };
+
+export default ProductForm;
