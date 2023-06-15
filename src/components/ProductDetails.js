@@ -1,4 +1,5 @@
 import { useProductsContext } from "../hooks/useProductsContext";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const ProductDetails = ({ product }) => {
   const { dispatch } = useProductsContext();
@@ -28,8 +29,12 @@ const ProductDetails = ({ product }) => {
         <strong>Aditional Info: </strong>
         {product.aditional_info}
       </p>
-      <p>{product.createdAt}</p>
-      <span onClick={handleDelete}>delete</span>
+      <p>
+        {formatDistanceToNow(new Date(product.createdAt), { addSuffix: true })}
+      </p>
+      <span className="material-symbols-outlined" onClick={handleDelete}>
+        delete
+      </span>
     </div>
   );
 };
