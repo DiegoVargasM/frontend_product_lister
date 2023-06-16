@@ -24,6 +24,7 @@ const ProductForm = () => {
       },
     });
     const json = await response.json();
+    console.log("json de creacion", json);
 
     if (!response.ok) {
       setError(json.error);
@@ -37,7 +38,7 @@ const ProductForm = () => {
       setError(null);
       setEmptyFields([]);
       console.log("new product added", json);
-      dispatch({ type: "CREATE_PRODUCT", payload: json });
+      dispatch({ type: "CREATE_PRODUCT", payload: json.product });
     }
   };
 
