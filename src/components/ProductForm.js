@@ -51,9 +51,9 @@ const ProductForm = () => {
 
   return (
     <form className="create" onSubmit={handleSubmit}>
-      <h3>Add a New Product</h3>
+      <h3>Add a New Income/Expense</h3>
 
-      <label>Product Name:</label>
+      <label>Title:</label>
       <input
         type="text"
         onChange={(e) => setProductName(e.target.value)}

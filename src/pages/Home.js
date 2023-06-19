@@ -28,9 +28,25 @@ const Home = () => {
       fetchProducts();
     }
   }, [dispatch, user]);
+
+  let balance = 0;
+
+  if (products) {
+    for (const product of products) {
+      balance += product.amount;
+    }
+  }
+
+  const balanceStyle = {
+    color: balance < 0 ? "red" : "green",
+  };
+
   return (
     <div className="home">
       <div className="products">
+        <div>
+          My money balance:<span style={balanceStyle}> S/.{balance}</span>
+        </div>
         {products?.map((product) => (
           <ProductDetails product={product} key={product._id} />
         ))}
