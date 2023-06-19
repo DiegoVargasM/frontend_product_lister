@@ -45,7 +45,6 @@ const ProductForm = () => {
       setAditionalInfo("");
       setError(null);
       setEmptyFields([]);
-      console.log("new product added", json);
       dispatch({ type: "CREATE_PRODUCT", payload: json.product });
     }
   };
