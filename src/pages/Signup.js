@@ -27,7 +27,7 @@ const Signup = () => {
         value={password}
       />
 
-      <button>Sign up</button>
+      <button>Sign Up</button>
     </form>
   );
 };
