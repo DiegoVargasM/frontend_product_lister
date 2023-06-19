@@ -14,7 +14,7 @@ const Navbar = () => {
     <header>
       <div className="container">
         <Link to="/">
-          <h1>My Products List</h1>
+          <h1>My Expenses Tracker</h1>
         </Link>
         <nav>
           {user && (
