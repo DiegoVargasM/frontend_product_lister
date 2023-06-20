@@ -58,7 +58,7 @@ const ProductForm = () => {
         type="text"
         onChange={(e) => setProductName(e.target.value)}
         value={product_name}
-        className={emptyFields.includes("product_name") ? "error" : ""}
+        className={emptyFields.includes("Title") ? "error" : ""}
       />
 
       <label>Category:</label>
@@ -66,7 +66,7 @@ const ProductForm = () => {
         type="text"
         onChange={(e) => setCategory(e.target.value)}
         value={category}
-        className={emptyFields.includes("category") ? "error" : ""}
+        className={emptyFields.includes("Category") ? "error" : ""}
       />
 
       <label>Amount:</label>
@@ -74,7 +74,7 @@ const ProductForm = () => {
         type="number"
         onChange={(e) => setAmount(e.target.value)}
         value={amount}
-        className={emptyFields.includes("amount") ? "error" : ""}
+        className={emptyFields.includes("Amount") ? "error" : ""}
       />
 
       <label>Aditional Info:</label>
@@ -84,7 +84,7 @@ const ProductForm = () => {
         value={aditional_info}
       />
 
-      <button>Add Product</button>
+      <button>Add</button>
       {error && <div className="error">{error}</div>}
     </form>
   );
