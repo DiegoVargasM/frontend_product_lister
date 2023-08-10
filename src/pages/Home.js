@@ -45,7 +45,7 @@ const Home = () => {
     <div className="home">
       <div className="products">
         <div>
-          My money balance:<span style={balanceStyle}> S/.{balance}</span>
+          Total expenses:<span style={balanceStyle}> S/.{balance}</span>
         </div>
         {products?.map((product) => (
           <ProductDetails product={product} key={product._id} />

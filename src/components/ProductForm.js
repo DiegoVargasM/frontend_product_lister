@@ -51,7 +51,7 @@ const ProductForm = () => {
 
   return (
     <form className="create" onSubmit={handleSubmit}>
-      <h3>Add a New Income/Expense</h3>
+      <h3>Add a New Expense</h3>
 
       <label>Title:</label>
       <input
