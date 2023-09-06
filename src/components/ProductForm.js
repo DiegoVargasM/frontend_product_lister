@@ -25,6 +25,7 @@ const ProductForm = () => {
 
     const response = await fetch("/api/products", {
       method: "POST",
+      // no podemos enviar un objeto, por eso lo convertimos a JSON
       body: JSON.stringify(product),
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +36,9 @@ const ProductForm = () => {
     console.log("json de creacion", json);
 
     if (!response.ok) {
+      // en el controlador creamos la propiedad error
       setError(json.error);
+      // validacion de campos vacios
       setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
