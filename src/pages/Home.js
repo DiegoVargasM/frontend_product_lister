@@ -12,8 +12,9 @@ const Home = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      // no es necesario poner la url completa, porque agregamos el proxy en package.json
-      // ojo solo funciona en desarrollo, en produccion se debe usar la url completa
+      // no es necesario poner la url completa
+      // "http://localhost:8000/api/products" porque agregamos el proxy en package.json
+      // ojo: solo funciona en desarrollo, en produccion se debe usar la url completa
       const response = await fetch("/api/products", {
         headers: {
           Authorization: `Bearer ${user.token}`,
