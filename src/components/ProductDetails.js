@@ -1,8 +1,10 @@
 import { useProductsContext } from "../hooks/useProductsContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 const ProductDetails = ({ product }) => {
+  const navigate = useNavigate();
   const { dispatch } = useProductsContext();
   const { user } = useAuthContext();
 
@@ -19,6 +21,22 @@ const ProductDetails = ({ product }) => {
     const json = await response.json();
     if (response.ok) {
       dispatch({ type: "DELETE_PRODUCT", payload: json });
+    }
+  };
+
+  const handleEdit = async () => {
+    if (!user) {
+      return;
+    }
+    const response = await fetch(`/api/products/${product._id}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    const json = await response.json();
+    if (response.ok) {
+      dispatch({ type: "EDIT_PRODUCT", payload: json });
     }
   };
 
@@ -43,7 +61,7 @@ const ProductDetails = ({ product }) => {
       <span className="material-symbols-outlined delete" onClick={handleDelete}>
         delete
       </span>
-      <span className="material-symbols-outlined edit" onClick={handleDelete}>
+      <span className="material-symbols-outlined edit" onClick={handleEdit}>
         edit
       </span>
     </div>
