@@ -22,17 +22,25 @@ const ProductForm = () => {
     }
 
     const product = { product_name, category, amount, aditional_info };
-
+    if (product.amount < 0) {
+      setError("Amount debe ser mayor a 0");
+      return;
+    }
+    // la constante response es un objeto del tipo response:
+    // contiene informacion sobre la respuesta HTTP
+    // acceso a metodos como response.ok, .status, .headers, .json()
     const response = await fetch("/api/products", {
       method: "POST",
-      // no podemos enviar un objeto, por eso lo convertimos a JSON
+      // no podemos enviar un objeto, por eso lo convertimos a JSON string
       body: JSON.stringify(product),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${user.token}`,
       },
     });
+    // creamos una variable json para guardar la respuesta
     const json = await response.json();
+    console.log("RESPONSE de creacion", response);
     console.log("json de creacion", json);
 
     if (!response.ok) {
