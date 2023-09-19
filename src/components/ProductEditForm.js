@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useProductsContext } from "../hooks/useProductsContext";
+// import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const ProductEditForm = ({ product, toggleEdit, productId }) => {
-  const { dispatch } = useProductsContext();
+  // const { dispatch } = useProductsContext();
   const { user } = useAuthContext();
 
   const [product_name, setProductName] = useState(product.product_name);
@@ -72,7 +72,11 @@ const ProductEditForm = ({ product, toggleEdit, productId }) => {
         type="text"
         onChange={(e) => setProductName(e.target.value)}
         value={product_name}
-        className={emptyFields.includes("Title") ? "error" : ""}
+        className={
+          Array.isArray(emptyFields) && emptyFields.includes("Title")
+            ? "error"
+            : ""
+        }
       />
 
       <label>Category:</label>
@@ -80,7 +84,11 @@ const ProductEditForm = ({ product, toggleEdit, productId }) => {
         type="text"
         onChange={(e) => setCategory(e.target.value)}
         value={category}
-        className={emptyFields.includes("Category") ? "error" : ""}
+        className={
+          Array.isArray(emptyFields) && emptyFields.includes("Category")
+            ? "error"
+            : ""
+        }
       />
 
       <label>Amount:</label>
@@ -88,7 +96,11 @@ const ProductEditForm = ({ product, toggleEdit, productId }) => {
         type="number"
         onChange={(e) => setAmount(e.target.value)}
         value={amount}
-        className={emptyFields.includes("Amount") ? "error" : ""}
+        className={
+          Array.isArray(emptyFields) && emptyFields.includes("Amount")
+            ? "error"
+            : ""
+        }
       />
 
       <label>Aditional Info:</label>

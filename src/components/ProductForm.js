@@ -69,7 +69,11 @@ const ProductForm = () => {
         type="text"
         onChange={(e) => setProductName(e.target.value)}
         value={product_name}
-        className={emptyFields.includes("Title") ? "error" : ""}
+        className={
+          Array.isArray(emptyFields) && emptyFields.includes("Title")
+            ? "error"
+            : ""
+        }
       />
 
       <label>Category:</label>
@@ -77,7 +81,11 @@ const ProductForm = () => {
         type="text"
         onChange={(e) => setCategory(e.target.value)}
         value={category}
-        className={emptyFields.includes("Category") ? "error" : ""}
+        className={
+          Array.isArray(emptyFields) && emptyFields.includes("Category")
+            ? "error"
+            : ""
+        }
       />
 
       <label>Amount:</label>
@@ -85,7 +93,11 @@ const ProductForm = () => {
         type="number"
         onChange={(e) => setAmount(e.target.value)}
         value={amount}
-        className={emptyFields.includes("Amount") ? "error" : ""}
+        className={
+          Array.isArray(emptyFields) && emptyFields.includes("Amount")
+            ? "error"
+            : ""
+        }
       />
 
       <label>Aditional Info:</label>
