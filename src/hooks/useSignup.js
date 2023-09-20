@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
+// we create a custom hook that handles the signup logic
+// to separate the UI and presentation from the signup functionality
 export const useSignup = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
