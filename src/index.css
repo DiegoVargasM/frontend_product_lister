@@ -208,3 +208,24 @@ body.active-modal {
   right: 10px;
   padding: 5px 7px;
 }
+
+/* Add a CSS class for products when the modal is open */
+.product-details.modal-open {
+  z-index: 1;
+  /* Products with the modal open will be on top */
+}
+
+/* Style for products with the modal open */
+.product-details.modal-open {
+  opacity: 0.5;
+  /* Reduce opacity to indicate they are in the background */
+  pointer-events: none;
+  /* Disable interactions with products in the background */
+}
+
+/* Style for the modal */
+.modal {
+  z-index: 2;
+  /* Ensure the modal appears on top of products */
+  /* ... (your other modal styles) */
+}

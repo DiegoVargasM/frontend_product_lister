@@ -31,7 +31,7 @@ const ProductDetails = ({ product }) => {
 
   return (
     <div>
-      <div className="product-details">
+      <div className={`product-details ${modal ? "modal-open" : ""}`}>
         <h4>{product.product_name}</h4>
         <p>
           <strong>Category: </strong>
