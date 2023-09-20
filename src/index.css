@@ -227,5 +227,4 @@ body.active-modal {
 .modal {
   z-index: 2;
   /* Ensure the modal appears on top of products */
-  /* ... (your other modal styles) */
 }
